@@ -10,7 +10,7 @@ export default function App() {
   const handleAddtask = () => {
     Keyboard.dismiss();
     setTaskItems([...taskItems, task])
-    setTask(null);
+    setTask('');
   }
 
   const completeTask = (index) =>{
@@ -31,7 +31,7 @@ export default function App() {
           {
             taskItems.map((item, index) => {
               return (
-                <TouchableOpacity key = {index} onpress = {() => completeTask(index)}>
+                <TouchableOpacity key = {index} onPress = {() => completeTask(index)}>
                     <Task text={item} />
                 </TouchableOpacity>
               )
@@ -50,7 +50,7 @@ export default function App() {
             <TextInput style = {styles.input} placeholder = {'Write a task'} value={task} onChangeText={text => setTask(text)} />
 
             <TouchableOpacity onPress={() => handleAddtask()}> 
-              <View styles= {styles.addWrapper}>
+              <View style= {styles.addWrapper}>
                 <Text style = {styles.addText}>+</Text>
               </View>
             </TouchableOpacity>
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
   },
   tasksWrapper: {
     paddingTop: 80,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    backgroundColor: '#4287f5',
   },
   sectionTitle: {
     fontSize: 24,
