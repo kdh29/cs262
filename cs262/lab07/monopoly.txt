@@ -1,0 +1,29 @@
+Player(ID, emailAddress, name)
+Game(ID, time)
+PlayerGame(gameID, playerID, score)
+
+PlayerState(playerID, gameID, cash, position)
+    - playerID: Foreign key referencing Player(ID)
+    - gameID: Foreign key referencing Game(ID)
+    - cash: Current cash of the player
+    - position: Current position on the Monopoly board (0-39)
+
+Property(ID, name, baseRent, price, colorGroup)
+    - ID: Unique identifier for the property
+    - name: Name of the property (e.g., “Boardwalk”)
+    - baseRent: Base rent value of the property
+    - price: Purchase price of the property
+    - colorGroup: Color group of the property (for determining monopolies)
+
+PlayerProperty(playerID, gameID, propertyID, houses, hotels)
+    - playerID: Foreign key referencing Player(ID)
+    - gameID: Foreign key referencing Game(ID)
+    - propertyID: Foreign key referencing Property(ID)
+    - houses: Number of houses on this property (0-4)
+    - hotels: Number of hotels on this property (0 or 1)
+
+GameTurn(gameID, currentTurnPlayerID, turnOrder)
+    - gameID: Foreign key referencing Game(ID)
+    - currentTurnPlayerID: Foreign key referencing Player(ID) indicating the player currently taking their turn
+    - turnOrder: Integer indicating the sequence of players in this game
+
